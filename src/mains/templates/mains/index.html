@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="row my-5">
+    
+    <!-- category list -->
+    <div class="col-sm-3">
+        <ul class="list-group w-75">
+            {% for cat in categories %}
+           <a href="/?category={{cat.id}}"><li class="list-group-item">{{cat.name}}</li></a>
+           
+           {% endfor %}             
+          </ul>
+    </div>
+
+    <!-- product display -->
+    <div class="col-sm-9">
+        <div class="row">
+            {% for prod in products %}
+            <div class="col-sm-3">
+                <div class="card mb-4 text-center" style="width: 100%;">                    
+                    <img src="{{prod.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{prod.name}}</h5>
+                      <p class="card-text">Rs.{{prod.price}}</p>
+                      <a href="#" class="btn btn-primary btn-sm">Add To Cart</a>
+                    </div>
+                  </div>                
+            </div>
+            {% endfor %}        
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
